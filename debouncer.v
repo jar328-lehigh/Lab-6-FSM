@@ -24,17 +24,17 @@ module debouncer(raw, clean, clk);
 input raw, clk;
 output reg clean;
 
-reg [2:0] counter;
+    reg [26:0] counter;
 wire TC;
 
 always @(posedge clk)
 begin
     if(~raw)
-    counter<=3'b000;
+    counter<=27'd0;
     else
-    counter<=counter +3'b001;
+    counter<=counter +27'd1;
 end
-assign TC= (counter==3'b111);
+    assign TC= (counter==27'h7ffffff);
 
 always @(posedge clk)
 begin
